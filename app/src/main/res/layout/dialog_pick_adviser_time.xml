@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:layout_gravity="bottom"
+    android:background="@drawable/shape_appointment_reserve_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFreeTimes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/row_rv_adviser_free_time"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/layButton"/>
+
+    <LinearLayout
+        android:id="@+id/layButton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/btnSubmit"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:layout_gravity="left|center"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/shape_button_primary"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/normal_view_height"
+                android:layout_height="35dp"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_arrow_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextSecondary"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:textColor="@color/white"
+                android:text="@string/hint_confirm" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtSelectedTime"
+            style="@style/TextSecondary"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_weight="0.5"
+            android:text="17-18"
+            android:textColor="@color/accent_700" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginRight="5dp"
+            android:text="@string/hint_selected_hours" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="0.09"
+            app:srcCompat="@drawable/ic_dot" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

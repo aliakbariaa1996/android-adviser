@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="ir.org.tavanesh.core.domain.course.entity.Course" />
+    </data>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="20dp"
+        tools:backgroundTint="@color/primary_700"
+        android:elevation="1dp"
+        app:cardCornerRadius="@dimen/normal_view_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/asset_six" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtTitle"
+                style="@style/TextHeader"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="18dp"
+                android:gravity="right|center"
+                android:text="@{model.name}"
+                tools:text="دوره آموزشی"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
+                app:layout_constraintTop_toTopOf="@id/imgIcon"
+                tools:ignore="RtlHardcoded" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtMaster"
+                style="@style/TextPrimary"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="right|center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/imgIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                android:text="@{model.teacherName}"
+                tools:text="مدرس : رضا زاهدی" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="70dp"
+                style="@style/TextSecondary"
+                android:layout_height="26dp"
+                android:background="@drawable/shape_text_time_course"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{model.timeCost}"
+                tools:text="15:38"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/imgIcon"
+                app:layout_constraintTop_toBottomOf="@+id/txtMaster" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

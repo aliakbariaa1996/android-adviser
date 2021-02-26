@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_200">#FF38DAA0</color>
+    <color name="primary_500">#FF38DAA0</color>
+    <color name="primary_700">#31C08D</color>
+    <color name="accent_200">#FFFF824D</color>
+    <color name="accent_700">#E36A37</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="whiteGrey">#EFEFEF</color>
+    <color name="grayClicked">#8E8D8D</color>
+    <color name="orange">#f97</color>
+
+
+
+    <color name="text_primary_light_theme">#FF202020</color>
+    <color name="text_secondary_light_theme">#FF909090</color>
+    <color name="background_light">#F1F1F1</color>
+
+    <color name="text_primary_dark_theme">#FF202020</color>
+    <color name="text_secondary_dark_theme">#FF909090</color>
+    <color name="background_night">#FF000000</color>
+
+    <color name="icon_light">#FFFFFFFF</color>
+    <color name="icon_dark">#FF000000</color>
+
+    <color name="white_clicked">#EBE6E6</color>
+    <color name="white_light">#FFDADADA</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_clicked">#22000000</color>
+    <color name="toast_background">#AA000000</color>
+    <color name="gray">#b2b2b2</color>
+
+
+
+    <item name="blue" type="color">#FF33B5E5</item>
+    <item name="purple" type="color">#FFAA66CC</item>
+    <item name="green" type="color">#FF99CC00</item>
+    <item name="red" type="color">#FFFF4444</item>
+    <item name="darkblue" type="color">#FF0099CC</item>
+    <item name="darkpurple" type="color">#FF9933CC</item>
+    <item name="darkgreen" type="color">#FF669900</item>
+    <item name="darkorange" type="color">#FFFF8800</item>
+    <item name="darkred" type="color">#FFCC0000</item>
+
+    <integer-array name="androidcolors">
+        <item>@color/blue</item>
+        <item>@color/purple</item>
+        <item>@color/green</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+        <item>@color/darkblue</item>
+        <item>@color/darkpurple</item>
+        <item>@color/darkgreen</item>
+        <item>@color/darkorange</item>
+        <item>@color/darkred</item>
+    </integer-array>
+</resources>

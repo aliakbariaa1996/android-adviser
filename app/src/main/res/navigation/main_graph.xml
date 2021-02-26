@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ir.org.tavanesh.presentation.auth.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_authMenuFragment"
+            app:destination="@id/authMenuFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="ir.org.tavanesh.presentation.auth.intro.IntroFragment"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_authMenuFragment"
+            app:destination="@id/authMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        tools:layout="@layout/fragment_login"
+        android:name="ir.org.tavanesh.presentation.auth.login.LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        tools:layout="@layout/fragment_register"
+        android:name="ir.org.tavanesh.presentation.auth.register.RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        tools:layout="@layout/fragment_dashboard"
+        android:name="ir.org.tavanesh.presentation.dashboard.DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_examListFragment"
+            app:destination="@id/examListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_courseListFragment"
+            app:destination="@id/courseListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_examShowFragment"
+            app:destination="@id/examShowFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_courseInfoFragment"
+            app:destination="@id/courseInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authMenuFragment"
+        android:name="ir.org.tavanesh.presentation.auth.menu.AuthMenuFragment"
+        tools:layout="@layout/fragment_auth_menu" >
+        <action
+            android:id="@+id/action_authMenuFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_authMenuFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="ir.org.tavanesh.presentation.auth.verification.VerificationFragment"
+        tools:layout="@layout/fragment_verification" >
+        <action
+            android:id="@+id/action_verificationFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="ir.org.tavanesh.presentation.auth.forget.ForgetPasswordFragment"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examListFragment"
+        android:name="ir.org.tavanesh.presentation.exam.list.ExamListFragment"
+        tools:layout="@layout/fragment_exam_list" >
+        <action
+            android:id="@+id/action_examListFragment_to_examShowFragment"
+            app:destination="@id/examShowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeExamFragment"
+        android:name="ir.org.tavanesh.presentation.exam.take.TakeExamFragment"
+        tools:layout="@layout/fragment_take_exam" >
+        <action
+            android:id="@+id/action_takeExamFragment_to_examResultFragment"
+            app:destination="@id/examResultFragment" />
+        <argument
+            android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.exam.entity.Exam" />
+    </fragment>
+    <fragment
+        android:id="@+id/examResultFragment"
+        android:name="ir.org.tavanesh.presentation.exam.result.ExamResultFragment"
+        tools:layout="@layout/fragment_exam_result" >
+        <action
+            android:id="@+id/action_examResultFragment_to_adviceCenterListFragment"
+            app:destination="@id/adviceCenterListFragment" />
+        <action
+            android:id="@+id/action_examResultFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <argument android:name="OBJECT"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/examShowFragment"
+        android:name="ir.org.tavanesh.presentation.exam.show.ExamShowFragment"
+        tools:layout="@layout/fragment_exam_show" >
+        <action
+            android:id="@+id/action_examShowFragment_to_takeExamFragment"
+            app:destination="@id/takeExamFragment" />
+        <argument
+            android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.exam.entity.Exam" />
+    </fragment>
+    <fragment
+        android:id="@+id/adviceCenterListFragment"
+        android:name="ir.org.tavanesh.presentation.adviser.advicecenterlist.AdviceCenterListFragment"
+        tools:layout="@layout/fragment_advice_center_list" >
+        <action
+            android:id="@+id/action_adviceCenterListFragment_to_adviceCenterFragment"
+            app:destination="@id/adviceCenterFragment" />
+        <argument
+            android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.advisor.repository.GetAdviceCentersParams" />
+    </fragment>
+    <fragment
+        android:id="@+id/adviceCenterFragment"
+        android:name="ir.org.tavanesh.presentation.adviser.advicecenter.AdviceCenterFragment"
+        tools:layout="@layout/fragment_advice_center" >
+        <action
+            android:id="@+id/action_adviceCenterFragment_to_adviserFragment"
+            app:destination="@id/adviserFragment" />
+        <argument
+            android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.advisor.entity.AdviceCenter" />
+    </fragment>
+    <fragment
+        android:id="@+id/adviserFragment"
+        android:name="ir.org.tavanesh.presentation.adviser.adviser.AdviserFragment"
+        tools:layout="@layout/fragment_adviser" >
+        <action
+            android:id="@+id/action_adviserFragment_to_consultInfoFragment"
+            app:destination="@id/consultInfoFragment" />
+        <argument android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.advisor.entity.Adviser" />
+        <argument
+            android:name="ITEM_ID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultInfoFragment"
+        android:name="ir.org.tavanesh.presentation.consult.show.ConsultInfoFragment"
+        tools:layout="@layout/fragment_consult_info" >
+        <argument android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.consult.entity.Consult" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseListFragment"
+        android:name="ir.org.tavanesh.presentation.course.list.CourseListFragment"
+        tools:layout="@layout/fragment_course_list" >
+        <action
+            android:id="@+id/action_courseListFragment_to_courseInfoFragment"
+            app:destination="@id/courseInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseInfoFragment"
+        android:name="ir.org.tavanesh.presentation.course.info.CourseInfoFragment"
+        tools:layout="@layout/fragment_course_info" >
+        <action
+            android:id="@+id/action_courseInfoFragment_to_videoPlayerFragment"
+            app:destination="@id/videoPlayerFragment" />
+        <argument
+            android:name="OBJECT"
+            app:argType="ir.org.tavanesh.core.domain.course.entity.Course" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoPlayerFragment"
+        android:name="ir.org.tavanesh.presentation.course.video.VideoPlayerFragment"
+        tools:layout="@layout/fragment_video_player" >
+        <argument
+            android:name="ITEM_ID"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/consultHistoryFragment"
+        android:name="ir.org.tavanesh.presentation.consult.history.ConsultHistoryFragment"
+        tools:layout="@layout/fragment_consult_history" >
+        <action
+            android:id="@+id/action_consultHistoryFragment_to_consultInfoFragment"
+            app:destination="@id/consultInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="ir.org.tavanesh.presentation.menu.privacypolicy.PrivacyPolicyFragment"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ir.org.tavanesh.presentation.menu.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="ir.org.tavanesh.presentation.menu.support.SupportFragment"
+        tools:layout="@layout/fragment_support" />
+</navigation>

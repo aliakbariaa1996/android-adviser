@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="ir.org.tavanesh.core.domain.consult.entity.ConsultStatues"/>
+        <variable
+            name="model"
+            type="ir.org.tavanesh.core.domain.consult.entity.Consult" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="180dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:elevation="1dp"
+            app:cardCornerRadius="@dimen/border_group_view"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivStatus"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@{(model.status == ConsultStatues.PAST)?@drawable/ic_back : @drawable/ic_more_color}"
+                    tools:srcCompat="@drawable/ic_back"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp" />
+
+                <LinearLayout
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="90dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginStart="8dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintStart_toEndOf="@+id/ivStatus">
+
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:orientation="vertical"
+                        android:layout_height="match_parent">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextSecondary"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center"
+                            tools:text="18 آبان"
+                            android:text="@{model.date}"
+                            />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextSecondary"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:gravity="center"
+                            tools:text="17 - 18 "
+                            android:text="@{model.time}"
+                            />
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:layout_gravity="center"
+                        android:layout_height="35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_calendar"
+                       />
+                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    android:text="@{model.title}"
+                    style="@style/TextHeader"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right|center"
+                    tools:text="شخصیت شناسی"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="RtlHardcoded" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAddress"
+                    android:text="@{model.centerName}"
+                    style="@style/TextPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right|center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                    tools:text="مرکز مشاوره پیروزی" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAdviceCount"
+                    android:text="@{model.adviserName}"
+                    style="@style/TextPrimary"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="18dp"
+                    android:gravity="right|center"
+                    tools:text="شاهرخ اسد زاده"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

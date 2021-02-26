@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.adviser.advicecenterlist.AdviceCenterListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_light"
+        tools:context=".presentation.adviser.advicecenterlist.AdviceCenterListFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtAdviceCenter"
+            style="@style/TextHeader"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:text="@{String.format(@string/hint_advice_center_in_city,vm.cityName)}"
+            tools:text="@string/hint_advice_center_in_city"
+            android:layout_height="@dimen/normal_view_height"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.aspsine.irecyclerview.IRecyclerView
+            app:loadMoreEnabled="true"
+            android:id="@+id/rvAdviceCenterList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAdviceCenter"
+            tools:listitem="@layout/row_rv_advice_center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

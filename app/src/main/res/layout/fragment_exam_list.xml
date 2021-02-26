@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.exam.list.ExamListViewModel" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".presentation.exam.list.ExamListFragment">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgExam"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/asset_six"/>
+
+            <com.aspsine.irecyclerview.IRecyclerView
+                android:nestedScrollingEnabled="true"
+                app:loadMoreEnabled="true"
+                android:id="@+id/rvExams"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/row_rv_exam" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

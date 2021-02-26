@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import
+            type="ir.org.tavanesh.core.domain.question.entity.AnswerType"/>
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.course.video.VideoPlayerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.course.video.VideoPlayerFragment">
+
+        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+            android:id="@+id/mediaPlayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:visibility="@{(vm.isQuestionTime==true)?View.VISIBLE:View.GONE}"
+            tools:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="20dp">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/mainContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingLeft="20dp"
+                    android:orientation="vertical">
+
+                    <!--question-->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextPrimary"
+                        android:lineSpacingExtra="4dp"
+                        android:layout_marginBottom="50dp"
+                        tools:text="صورت سوال تستی این چیست, آن چیست؟"
+                        android:text="@{vm.currentQuestion.question}"
+                        android:layout_width="match_parent"
+                        android:gravity="center|right"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary_dark_theme" />
+
+                    <!--input type-->
+                    <LinearLayout
+                        android:visibility="@{(vm.currentQuestion.type==AnswerType.TEXT)?View.VISIBLE :View.GONE}"
+                        tools:visibility="visible"
+                        android:id="@+id/inputType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:background="@drawable/shape_edit_gray"
+                            android:hint="@string/hint_answer"
+                            style="@style/TextPrimary"
+                            android:gravity="top"
+                            android:padding="15dp"
+                            android:maxLines="20"
+                            android:singleLine="false"/>
+
+                    </LinearLayout>
+
+                    <!--checkBox type-->
+                    <LinearLayout
+                        android:visibility="@{(vm.currentQuestion.type==AnswerType.MULTI_SELECT)?View.VISIBLE :View.GONE}"
+                        android:id="@+id/checkLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                    </LinearLayout>
+
+                    <!--radioBox type-->
+                    <RadioGroup
+                        android:visibility="@{(vm.currentQuestion.type==AnswerType.SINGLE_SELECT)?View.VISIBLE :View.GONE}"
+                        android:id="@+id/radioLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                    </RadioGroup>
+
+                    <!--submit button-->
+                    <LinearLayout
+                        android:onClick="@{()->vm.promptAnswer()}"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_button_primary"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/normal_view_height"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:padding="10dp"
+                            app:srcCompat="@drawable/ic_done_light" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="@dimen/normal_view_height"
+                            android:layout_weight="1"
+                            android:text="@string/action_send_answer" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

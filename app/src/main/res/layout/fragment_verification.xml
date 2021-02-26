@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="ir.org.tavanesh.data.platform.model.VerificationViews" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.auth.verification.VerificationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <!--enter your number-->
+        <LinearLayout
+            android:visibility="@{(vm.viewState==VerificationViews.MOBILE)? View.VISIBLE : View.GONE}"
+            tools:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/adviser_two" />
+
+            <LinearLayout
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="@dimen/normal_view_height"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_edit_gray_border"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    app:srcCompat="@drawable/ic_phone"
+                    android:layout_width="@dimen/normal_view_height"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:padding="8dp"
+                    android:layout_margin="3dp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtMobile"
+                    style="@style/TextPrimary"
+                    android:maxLength="11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/normal_view_height"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
+                    android:hint="@string/hint_phone_number_enter" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="@{()->vm.checkMobileNumber(edtMobile.getText().toString())}"
+                android:layout_marginTop="15dp"
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="@dimen/normal_view_height"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_button_accent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="@string/action_submit"
+                    style="@style/TextHeader"
+                    android:layout_marginLeft="@dimen/normal_view_height" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/normal_view_height"
+                    android:layout_height="@dimen/normal_view_height"
+                    app:srcCompat="@drawable/ic_check_circle"
+                    android:padding="10dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--enter code-->
+        <LinearLayout
+            android:visibility="@{(vm.viewState==VerificationViews.VERIFY_CODE)? View.VISIBLE : View.GONE}"
+            tools:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/asset_five" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                style="@style/TextPrimary"
+                android:layout_height="@dimen/normal_view_height"
+                android:text="@string/hint_please_enter_verify_code"/>
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtVerifyCode"
+                    android:inputType="number"
+                    android:imeOptions="actionDone"
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:hint="@string/hint_dash"
+                    />
+
+            <LinearLayout
+                android:layout_width="@dimen/normal_view_width"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="@dimen/normal_view_height">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:onClick="@{()->vm.changeState(VerificationViews.MOBILE)}"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    style="@style/TextSecondary"
+                    android:textColor="@color/primary_700"
+                    android:layout_height="30dp"
+                    android:gravity="left|center"
+                    android:text="@string/hint_change_number"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/primary_700"
+                    android:gravity="right|center"
+                    style="@style/TextSecondary"
+                    android:layout_height="30dp"
+                    tools:text="1:58"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:onClick="@{()->vm.checkMobileNumber(edtMobile.getText().toString())}"
+                android:layout_marginTop="15dp"
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="@dimen/normal_view_height"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_button_primary">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="@string/hint_confirm"
+                    style="@style/TextHeader"
+                    android:layout_marginLeft="@dimen/normal_view_height" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/normal_view_height"
+                    android:layout_height="@dimen/normal_view_height"
+                    app:srcCompat="@drawable/ic_check_circle"
+                    android:padding="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

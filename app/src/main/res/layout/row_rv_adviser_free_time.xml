@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="ir.org.tavanesh.core.domain.advisor.entity.AdviserTime" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="110dp"
+        android:layout_height="80dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@{model.time}"
+                tools:text="22:00-23:30"
+                android:textColor="@color/black"
+                android:background="@{(model.isSelected==true)? @drawable/shape_button_primary : @drawable/shape_course_rec}"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

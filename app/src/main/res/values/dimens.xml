@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="normal_view_height">48dp</dimen>
+    <dimen name="normal_view_width">250dp</dimen>
+    <dimen name="zero">0dp</dimen>
+
+    <dimen name="header_text_size">15sp</dimen>
+    <dimen name="primary_text_size">14sp</dimen>
+    <dimen name="secondary_text_size">12sp</dimen>
+    <dimen name="mini_text_size">11sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
+    <dimen name="button_text_size">14sp</dimen>
+    <dimen name="edit_text_size">14sp</dimen>
+
+    <dimen name="border_action_view">10dp</dimen>
+    <dimen name="border_group_view">25dp</dimen>
+    <dimen name="border_row">10dp</dimen>
+
+    <dimen name="image_button_dimen">48dp</dimen>
+</resources>

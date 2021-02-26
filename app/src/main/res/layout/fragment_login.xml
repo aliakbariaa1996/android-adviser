@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.auth.login.LoginViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".presentation.auth.login.LoginFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextHeader"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="30dp"
+            android:gravity="right"
+            android:text="@string/hint_user_name"
+            android:textColor="@color/text_primary_dark_theme" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtUsername"
+            style="@style/TextPrimary"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_edit_gray_border"
+            android:gravity="center"
+            android:hint="@string/hint_username"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:nextFocusDown="@id/edtPassword" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextHeader"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:gravity="right"
+            android:text="@string/hint_password"
+            android:textColor="@color/text_primary_dark_theme" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtPassword"
+            style="@style/TextPrimary"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_edit_gray_border"
+            android:gravity="center"
+            android:hint="@string/hint_pass_word"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextPrimary"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:onClick="@{()->vm.forgetPassword()}"
+            android:text="@string/button_forget_password"
+            android:textColor="@color/primary_700" />
+
+        <LinearLayout
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/shape_button_primary"
+            android:onClick="@{()->vm.login(edtUsername.getText().toString(), edtPassword.getText().toString())}"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/normal_view_height"
+                android:layout_height="@dimen/normal_view_height"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_check_circle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextHeader"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/normal_view_height"
+                android:layout_weight="1"
+                android:text="@string/hint_enter" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

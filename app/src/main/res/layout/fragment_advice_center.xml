@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.adviser.advicecenter.AdviceCenterViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layoutInfo"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="120dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/adviser_two" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/ratingBar"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:isIndicator="false"
+                    android:rating="5"
+                    android:stepSize="0.5"
+                    app:mrb_progressTint="@color/orange" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="35dp"
+                    android:text="@{vm.adviceCenter.name}"
+                    tools:text="مرکز مشاور پیروزی"
+                    android:textColor="@color/black" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtAddress"
+                        style="@style/TextPrimary"
+                        android:text="@{vm.adviceCenter.address}"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:layout_marginRight="5dp"
+                        android:gravity="right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgLocation"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/hint_temp_address" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgLocation"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_location" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextPrimary"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:layout_marginRight="5dp"
+                        android:gravity="right"
+                        android:text="@{String.format(@string/hint_adviser_count_s, vm.adviceCenter.adviserCount)}"
+                        tools:text="تعداد مشاوران :3 "
+                        android:textColor="@color/primary_700"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgCount"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgCount"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:tint="@color/primary_700"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_about_us" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <com.aspsine.irecyclerview.IRecyclerView
+                android:nestedScrollingEnabled="true"
+                app:loadMoreEnabled="true"
+                android:id="@+id/rvAdvisers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/row_rv_adviser" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

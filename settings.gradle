@@ -1,0 +1,2 @@
+rootProject.name = 'Adviser'
+include ':app', ':core'

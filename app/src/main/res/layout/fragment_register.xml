@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.auth.register.RegisterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.auth.register.RegisterFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/hint_name"
+                    android:textColor="@color/text_primary_dark_theme" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtName"
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="@string/hint_family"
+                    android:textColor="@color/text_primary_dark_theme" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtFamily"
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_gender" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/sprGender"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:imeOptions="actionNext"
+                                android:layoutDirection="rtl"
+                                android:spinnerMode="dropdown" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_age" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edtAge"
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border"
+                            android:imeOptions="actionNext"
+                            android:inputType="number" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="@string/hint_education" />
+                <LinearLayout
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/sprEducation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:imeOptions="actionNext"
+                        android:layoutDirection="rtl"
+                        android:spinnerMode="dropdown" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="@string/hint_email"
+                    android:textColor="@color/text_primary_dark_theme" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtEmail"
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="@string/hint_national_code"
+                    android:textColor="@color/text_primary_dark_theme" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtNationalCode"
+                    style="@style/TextPrimary"
+                    android:maxLength="10"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:imeOptions="actionNext"
+                    android:inputType="number" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="@string/hint_user_name"
+                    android:textColor="@color/text_primary_dark_theme" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edtUsername"
+                    style="@style/TextPrimary"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_edit_gray_border"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+
+                <LinearLayout
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_password_repeat" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edtRePassword"
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_password" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/edtPassword"
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:onClick="@{()->vm.register(edtName.getText().toString(), edtFamily.getText().toString(), edtAge.getText().toString(), edtEmail.getText().toString(), edtPassword.getText().toString(), edtRePassword.getText().toString(), edtNationalCode.getText().toString(), edtUsername.getText().toString())}"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/shape_button_primary"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/normal_view_height"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:padding="5dp"
+                        app:srcCompat="@drawable/ic_check_circle" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/normal_view_height"
+                        android:layout_weight="1"
+                        android:text="@string/action_register" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

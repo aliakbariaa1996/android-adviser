@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.exam.show.ExamShowViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.exam.show.ExamShowFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgExam"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="30dp"
+            tools:src="@drawable/asset_six"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/layoutQuestions"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgExam">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextPrimary"
+                android:text="@{Integer.toString(vm.exam.questionCount)}"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/normal_view_height"
+                android:layout_marginRight="5dp"
+                tools:text="52" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/normal_view_height"
+                android:text="@string/hint_question_count"
+                android:textColor="@color/accent_700" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutExamTime"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:gravity="right"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutQuestions">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextPrimary"
+                android:text="@{(vm.exam.testTime == 0)? @string/hint_without_limit : Integer.toString(vm.exam.testTime)}"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/normal_view_height"
+                android:layout_marginRight="5dp"
+                tools:text="30 دقیقه" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/normal_view_height"
+                android:text="@string/hint_exam_time"
+                android:textColor="@color/accent_700" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/examDescription"
+            style="@style/TextPrimary"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="0dp"
+            android:gravity="top"
+            android:scrollbars="vertical"
+            android:text="@{vm.exam.description}"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutExamTime"
+            tools:text="@string/intro_one" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="@dimen/normal_view_height"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shape_button_accent"
+            android:onClick="@{()->vm.startExam()}"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/normal_view_height"
+                android:layout_height="@dimen/normal_view_height"
+                android:padding="10dp"
+                app:srcCompat="@drawable/ic_arrow_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextHeader"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/normal_view_height"
+                android:layout_weight="1"
+                android:text="@string/action_start_exam" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

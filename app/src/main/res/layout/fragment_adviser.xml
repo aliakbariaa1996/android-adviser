@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="ir.org.tavanesh.data.platform.model.AdviserViews"/>
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.adviser.adviser.AdviserViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--adviser info -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="550dp"
+                android:layout_margin="8dp"
+                android:visibility="@{(vm.viewState==AdviserViews.PROFILE)? View.VISIBLE : View.GONE }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgIcon"
+                    android:layout_width="120dp"
+                    android:layout_height="110dp"
+                    android:layout_marginBottom="20dp"
+                    android:elevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/asset_one" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="25dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="@dimen/border_group_view"
+                    app:cardElevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtTitle"
+                            style="@style/TextHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="70dp"
+                            android:text="@{vm.adviser.fullName}"
+                            tools:text="لیدا صمدی"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtSkill"
+                            android:text="@{vm.adviser.description}"
+                            style="@style/TextPrimary"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_marginBottom="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+                            tools:text="روانشناس بالینی" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtDescription"
+                            style="@style/TextPrimary"
+                            android:text="@{vm.adviser.description}"
+                            android:lineSpacingExtra="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:scrollbars="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtSkill"
+                            tools:text="@string/intro_one" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:onClick="@{()->vm.setViewState(AdviserViews.TIME_PICK)}"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/shape_button_primary"
+                    android:elevation="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/normal_view_height"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:padding="15dp"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/normal_view_height"
+                        android:layout_marginRight="@dimen/normal_view_height"
+                        android:layout_weight="1"
+                        android:text="@string/hint_appointment_reserve" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--appointment reserve-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:visibility="@{(vm.viewState==AdviserViews.TIME_PICK)? View.VISIBLE : View.GONE }"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/layoutAdviserInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgProfile"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:elevation="20dp"
+                        app:layout_constraintEnd_toStartOf="@+id/layoutAdviserInfo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/asset_one" />
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="90dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:text="شاهرخ اسد زاده"
+                            android:textColor="@color/black"
+                            tools:text="شاهرخ اسد زاده" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            tools:text="روانشناس بالینی" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtAppointment"
+                    style="@style/TextHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/hint_appointment_register"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/layoutAdviserInfo" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_margin="20dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="@dimen/border_group_view"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAppointment">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtTitleAppointmentReserve"
+                            style="@style/TextHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="15dp"
+                            android:gravity="center"
+                            android:text="@string/hint_reserve_appointment_title"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="4"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTitleAppointmentReserve">
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextPrimary"
+                                android:text="@{vm.showableTime}"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:layout_weight="1.3"
+                                tools:text="17:00" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextPrimary"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:layout_weight="0.7"
+                                android:text="@string/hint_reserve_time" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextPrimary"
+                                android:text="@{vm.showableDate}"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:layout_weight="1.3"
+                                tools:text="1399/9/22" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextPrimary"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:layout_weight="0.7"
+                                android:text="@string/hint_reserve_day" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="@dimen/normal_view_width"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toTopOf="@+id/btmSubmitReserveAppointment"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginBottom="10dp">
+                            <LinearLayout
+                                android:id="@+id/btnGetTime"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:background="@drawable/shape_button_accent"
+                                android:orientation="horizontal">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/TextHeader"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/hint_get_date_time" />
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"/>
+                            <LinearLayout
+                                android:id="@+id/btnGetDate"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:background="@drawable/shape_button_accent"
+                                android:orientation="horizontal">
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/TextHeader"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/hint_get_date" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:onClick="@{()->vm.submitConsultant()}"
+                            android:id="@+id/btmSubmitReserveAppointment"
+                            android:layout_width="@dimen/normal_view_width"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/shape_button_primary"
+                            android:orientation="horizontal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/normal_view_height"
+                                android:layout_height="@dimen/normal_view_height"
+                                android:padding="15dp"
+                                app:srcCompat="@drawable/ic_arrow_back" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextHeader"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/normal_view_height"
+                                android:layout_marginRight="@dimen/normal_view_height"
+                                android:layout_weight="1"
+                                android:text="@string/hint_time_reserve" />
+
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--appointment detail-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="@color/primary_700"
+                android:visibility="@{(vm.viewState==AdviserViews.DONE)? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgTime"
+                    android:layout_width="120dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="100dp"
+                    android:elevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_schedule" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtReserve"
+                    style="@style/TextHeader"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    android:text="ثبت قرار ملاقات شما با موفقیت انجام شد"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgTime"
+                    tools:ignore="RtlHardcoded" />
+
+
+                <LinearLayout
+                    android:id="@+id/layoutCode"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/shape_button_white"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtReserve">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:gravity="right|center"
+                        android:text="@{vm.consult.id}"
+                        android:textColor="@color/accent_700"
+                        tools:text="Y67GH0" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="left|center"
+                        android:text="شماره پیگیری : "
+                        android:textColor="@color/accent_700"
+                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:onClick="@{()->vm.goToConsultInfo()}"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/shape_button_accent"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutCode">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/normal_view_height"
+                        android:layout_marginRight="@dimen/normal_view_height"
+                        android:layout_weight="1"
+                        android:text="@string/hint_appointment_detail" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

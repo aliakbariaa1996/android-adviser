@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="ir.org.tavanesh.presentation.exam.result.ExamResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.exam.result.ExamResultFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgExam"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/asset_six"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/examResultDescription"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/backHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgExam">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtFeedback"
+                style="@style/TextPrimary"
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:lineSpacingExtra="5dp"
+                android:scrollbars="vertical"
+                android:text="@string/intro_one" />
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/backHome"
+            android:layout_width="@dimen/normal_view_width"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:onClick="@{()->vm.checkCityProvinceInit()}"
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="@dimen/normal_view_height"
+                android:background="@drawable/shape_button_primary"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/normal_view_height"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_done_light" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="153dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/normal_view_height"
+                    android:layout_weight="1"
+                    android:text="@string/action_look_better" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:onClick="@{()->vm.back()}"
+                android:layout_width="@dimen/normal_view_width"
+                android:layout_height="@dimen/normal_view_height"
+                android:background="@drawable/shape_button_accent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/normal_view_height"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/ic_arrow_back" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextHeader"
+                    android:layout_width="153dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/normal_view_height"
+                    android:layout_weight="1"
+                    android:text="@string/action_close" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--city picker-->
+        <LinearLayout
+            android:visibility="@{vm.showCityPicker ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:background="@color/toast_background"
+            android:onClick="@{()->vm.setCityPickerViewStatus(false)}">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shape_appointment_reserve_background"
+                android:onClick="@{()->vm.setCityPickerViewStatus(true)}">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTitle"
+                    style="@style/TextHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/hint_location"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlHardcoded" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtLocationDesc"
+                    style="@style/TextHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/hint_add_location_desc"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+                <LinearLayout
+                    android:id="@+id/layoutLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLocationDesc">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_city" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/sprCity"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:imeOptions="actionNext"
+                                android:layoutDirection="rtl"
+                                android:spinnerMode="dropdown" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextPrimary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/hint_state" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/normal_view_height"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/shape_edit_gray_border">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/sprState"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:imeOptions="actionNext"
+                                android:layoutDirection="rtl"
+                                android:spinnerMode="dropdown" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:onClick="@{()->vm.getConsultant()}"
+                    android:layout_width="@dimen/normal_view_width"
+                    android:layout_height="@dimen/normal_view_height"
+                    android:background="@drawable/shape_button_primary"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutLocation">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/normal_view_height"
+                        android:layout_height="@dimen/normal_view_height"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextHeader"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/normal_view_height"
+                        android:layout_weight="1"
+                        android:text="@string/hint_confirm" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
